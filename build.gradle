@@ -19,12 +19,12 @@ repositories {
 
 ext {
     serenityVersion = '4.2.22'
-    //cucumberVersion = '7.14.0'
+    cucumberVersion = '7.14.0'
     seleniumVersion = '4.18.1'
     junitVersion = '4.13.2'
 }
 
-dependencies {
+/*dependencies {
 
     // Serenity
     implementation "net.serenity-bdd:serenity-core:${serenityVersion}"
@@ -34,11 +34,35 @@ dependencies {
 
     // Cucumber
     implementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
-    //implementation "io.cucumber:cucumber-java:${cucumberVersion}"
-    //implementation "io.cucumber:cucumber-junit:${cucumberVersion}"
+    implementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    implementation "io.cucumber:cucumber-junit:${cucumberVersion}"
 
     // Selenium
     implementation "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
+
+    // JUnit
+    testImplementation "junit:junit:${junitVersion}"
+}*/
+
+dependencies {
+
+    // Serenity Core
+    testImplementation "net.serenity-bdd:serenity-core:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-junit:${serenityVersion}"
+
+    // Screenplay
+    testImplementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
+    testImplementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityVersion}"
+
+    // Cucumber con Serenity (ESTA es la importante)
+    testImplementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
+
+    // ⚠️ SOLO estas de Cucumber (no otras)
+    testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-junit:${cucumberVersion}"
+
+    // Selenium (opcional, Serenity ya lo trae)
+    testImplementation "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
 
     // JUnit
     testImplementation "junit:junit:${junitVersion}"

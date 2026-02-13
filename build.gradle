@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'eclipse'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '4.2.22'
+}
+
+group = 'qa.automation'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    serenityVersion = '4.2.22'
+    //cucumberVersion = '7.14.0'
+    seleniumVersion = '4.18.1'
+    junitVersion = '4.13.2'
+}
+
+dependencies {
+
+    // Serenity
+    implementation "net.serenity-bdd:serenity-core:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-junit:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
+    implementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityVersion}"
+
+    // Cucumber
+    implementation "net.serenity-bdd:serenity-cucumber:${serenityVersion}"
+    //implementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    //implementation "io.cucumber:cucumber-junit:${cucumberVersion}"
+
+    // Selenium
+    implementation "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
+
+    // JUnit
+    testImplementation "junit:junit:${junitVersion}"
+}
+
+test {
+    useJUnit()
+
+    systemProperty "cucumber.filter.tags",
+            System.getProperty("cucumber.filter.tags")
+
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+serenity {
+    reports = ["single-page-html"]
+}

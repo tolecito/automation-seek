@@ -14,6 +14,9 @@ public class RegistroUI extends PageObject {
     public static final Target MENSAJE_LARGO_REGISTRO = Target.the("Mensaje Largo Registro")
             .located(By.id("ossn-home-signup"));
 
+    public static final Target MENSAJE_ERROR_REGISTRO = Target.the("Mensaje Error Registro")
+            .located(By.id("ossn-signup-errors"));
+
     //CAMPOS DE REGISTRO
     public static final Target CAMPO_NOMBRE = Target.the("Campo Nombre")
             .located(By.name("firstname"));

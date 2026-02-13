@@ -14,7 +14,7 @@ Feature: Registro en la web
       | Ian          | Vargas     | ianvargas8@gmail.com    | ianvg8         | 147258         |05-04-2002 | Male   |
 
   @registroInfoIncompleta
-  Scenario Outline: Registro de usuario fallido por información incompleta
+  Scenario Outline: Registro de usuario fallido por información incompleta (ERROR)
     When el usuario completa el formulario de registro con sus datos "<nombre>","<apellido>","","<usuario>","<contrasena>","<nacimiento>","<sexo>"
     Then deberia ver el mensaje de registro "Some fields are incomplete. Please complete them to continue with the registration."
 
@@ -25,16 +25,16 @@ Feature: Registro en la web
   @registroCorreoRepetido
   Scenario Outline: Registro de usuario fallido por correo electronico ya usado
     When el usuario completa el formulario de registro con sus datos "<nombre>","<apellido>","<email>","<usuario>","<contrasena>","<nacimiento>","<sexo>"
-    Then deberia ver el mensaje de registro "The email address you used already exists in our database. Please try another email address."
+    Then deberia ver el mensaje de error en registro "The email address you used already exists in our database. Please try another email address."
 
     Examples:
       | nombre       | apellido   | email                  | usuario        | contrasena     |nacimiento | sexo   |
-      | Ian          | Vargas     | ianvarga6@gmail.com    | ianv7         | 147258         |05-04-2002 | Male   |
+      | Ian          | Vargas     | ianvarga8@gmail.com    | ianv11         | 147258         |05-04-2002 | Male   |
 
   @registroUsuarioRepetido
   Scenario Outline: Registro de usuario fallido por nombre de usuario ya usado
     When el usuario completa el formulario de registro con sus datos "<nombre>","<apellido>","<email>","<usuario>","<contrasena>","<nacimiento>","<sexo>"
-    Then deberia ver el mensaje de registro "The following username is taken. Please select a different one."
+    Then deberia ver el mensaje de error en registro "The following username is taken. Please select a different one."
 
     Examples:
       | nombre       | apellido   | email                   | usuario        | contrasena     |nacimiento | sexo   |

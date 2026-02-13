@@ -24,10 +24,10 @@ Feature: Inicio de sesion en la web
 
 
   @loginCredencialesIncompletas
-  Scenario Outline: Inicio de sesion fallido por credenciales incorrectas
+  Scenario Outline: Inicio de sesion fallido por credenciales incompletas (ERROR)
     When el usuario inicia sesion con las credenciales "<usuario>" y ""
     Then deberia ver el mensaje "Invalid username or password!"
 
     Examples:
       | usuario          |
-      | administrator     |
+      | administrator    |

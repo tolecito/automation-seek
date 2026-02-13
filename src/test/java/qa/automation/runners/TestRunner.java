@@ -13,12 +13,12 @@ import org.slf4j.LoggerFactory;
         features = {"src/test/resources/features"},
         glue = "qa.automation",
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        plugin = {
+        /*plugin = {
                 "pretty",
                 "summary",
                 "html:target/serenity-report.html",
                 "json:target/serenity-report.json"
-        },
+        },*/
         monochrome = true
 )
 public class TestRunner {

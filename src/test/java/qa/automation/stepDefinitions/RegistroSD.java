@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
+import qa.automation.questions.business.MensajeErrorRegistro;
 import qa.automation.questions.business.MensajeRegistroExitoso;
 import qa.automation.tasks.AbrirLaWebEnRegistro;
 
@@ -30,6 +31,13 @@ public class RegistroSD {
     public void deberiaVerMensajeDeRegistro(String mensajeEsperado) {
         OnStage.theActorInTheSpotlight().should(
                 seeThat(MensajeRegistroExitoso.mostrado(), equalTo(mensajeEsperado))
+        );
+    }
+
+    @Then("deberia ver el mensaje de error en registro {string}")
+    public void deberiaVerMensajeDeErrorRegistro(String mensajeEsperado) {
+        OnStage.theActorInTheSpotlight().should(
+                seeThat(MensajeErrorRegistro    .mostrado(), equalTo(mensajeEsperado))
         );
     }
 
